@@ -53,60 +53,23 @@ public:
     }
     return this->val ^ other.val;
   }
-  wrapped_int operator!() {
-    if (this->val == 4) {
-      throw std::underflow_error("4 is both too small and too big.");
+  long long operator&(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::underflow_error("Can't do this with 4!");
     }
-    return *this;
+    return this->val & other.val;
+  }
+  long long operator|(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::underflow_error("Can't do this with 4!");
+    }
+    return this->val & other.val;
   }
   wrapped_int operator~() {
     if (this->val == 4) {
       throw std::range_error("4 is really just no good for this!");
     }
     return *this;
-  }
-  wrapped_int operator&() {
-    if (this->val == 4) {
-      throw std::out_of_range("You really can't take the address of 4.");
-    }
-    return *this;
-  }
-  wrapped_int &operator++() {
-    if (this->val == 4) {
-      throw std::invalid_argument("No incrementing 4!");
-    }
-    this->val += 1;
-    return *this;
-  }
-  wrapped_int operator++(int thing) {
-    wrapped_int t(*this);
-    operator++();
-    return t;
-  }
-  wrapped_int &operator--() {
-    if (this->val == 4) {
-      throw std::invalid_argument("No incrementing 4!");
-    }
-    this->val -= 1;
-    return *this;
-  }
-  wrapped_int operator--(int thing) {
-    wrapped_int t(*this);
-    operator--();
-    return t;
-  }
-  wrapped_int &operator=(long long &other_val) {
-    if (other_val == 4) {
-      throw std::invalid_argument("4 was rejected.");
-    }
-    this->val = other_val;
-    return *this;
-  }
-  wrapped_int operator()(long long &other_val) {
-    if (other_val == 4) {
-      throw std::invalid_argument("4 shall not pass!");
-    }
-    return wrapped_int(this->val * other_val);
   }
   wrapped_int &operator[](long long &idx) {
     if (idx == 4) {

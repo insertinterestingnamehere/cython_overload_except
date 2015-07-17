@@ -46,6 +46,20 @@ def xor(long long a, long long b):
     cdef add.wrapped_int wb = add.wrapped_int(b)
     return wa ^ wb
 
+def bitwise_and(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa & wb
+
+def bitwise_or(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa | wb
+
+def bitwise_not(long long a):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return (~a).val
+
 def assign_index(long long a, long long b, long long c):
     cdef add.wrapped_int wa = add.wrapped_int(a)
     cdef add.wrapped_int wb = add.wrapped_int(b)
