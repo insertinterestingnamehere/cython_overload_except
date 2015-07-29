@@ -71,6 +71,144 @@ public:
     }
     return *this;
   }
+  long long operator&() {
+    if (this->val == 4) {
+      throw std::out_of_range("4 cannot be located!");
+    }
+    return this->val;
+  }
+  long long operator==(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("4 isn't logical and can't be equal to anything!");
+    }
+    return this->val == other.val;
+  }
+  long long operator!=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("4 isn't logical and can'd be not equal to anything either!");
+    }
+    return this->val != other.val;
+  }
+  long long operator<(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't compare with 4!");
+    }
+    return this->val < other.val;
+  }
+  long long operator<=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't compare with 4!");
+    }
+    return this->val <= other.val;
+  }
+  long long operator>(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't compare with 4!");
+    }
+    return this->val > other.val;
+  }
+  long long operator>=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't compare with 4!");
+    }
+    return this->val >= other.val;
+  }
+  wrapped_int operator<<(long long &shift) {
+    if (shift == 4) {
+      throw std::overflow_error("Shifting by 4 is just bad.");
+    }
+    return wrapped_int(this->val << shift);
+  }
+  wrapped_int operator>>(long long &shift) {
+    if (shift == 4) {
+      throw std::underflow_error("Shifting by 4 is just bad.");
+    }
+    return wrapped_int(this->val >> shift);
+  }
+  wrapped_int &operator+=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val += other.val;
+    return *this;
+  }
+  wrapped_int &operator-=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val -= other.val;
+    return *this;
+  }
+  wrapped_int &operator*=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val *= other.val;
+    return *this;
+  }
+  wrapped_int &operator/=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val /= other.val;
+    return *this;
+  }
+  wrapped_int &operator%=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val %= other.val;
+    return *this;
+  }
+  wrapped_int &operator^=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val ^= other.val;
+    return *this;
+  }
+  wrapped_int &operator&=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val %= other.val;
+    return *this;
+  }
+  wrapped_int &operator|=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val %= other.val;
+    return *this;
+  }
+  wrapped_int &operator<<=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val %= other.val;
+    return *this;
+  }
+  wrapped_int &operator>>=(wrapped_int &other) {
+    if (other.val == 4) {
+      throw std::invalid_argument("Can't perform an in-place operation with 4!");
+    }
+    this->val %= other.val;
+    return *this;
+  }
+  wrapped_int &operator++() {
+    if (this->val == 4) {
+      throw std::out_of_range("Can't increment 4!");
+    }
+    this->val += 1;
+    return *this;
+  }
+  wrapped_int &operator--() {
+    if (this->val == 4) {
+      throw std::out_of_range("Can't increment 4!");
+    }
+    this->val -= 1;
+    return *this;
+  }
   wrapped_int &operator[](long long &idx) {
     if (idx == 4) {
       throw std::invalid_argument("Index of 4 not allowed.");

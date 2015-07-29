@@ -1,4 +1,5 @@
 cimport add
+from cython.operator import preincrement, predecrement
 
 def assert_raised(f, *args):
     try:
@@ -60,6 +61,56 @@ def bitwise_not(long long a):
     cdef add.wrapped_int wa = add.wrapped_int(a)
     return (~a).val
 
+def address(long long a):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return &wa
+
+def iseq(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa == wb
+
+def neq(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa != wb
+
+def less(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa < wb
+
+def leq(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa <= wb
+
+def greater(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa > wb
+
+def geq(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    cdef add.wrapped_int wb = add.wrapped_int(b)
+    return wa < wb
+
+def left_shift(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return (wa << b).val
+
+def right_shift(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return (wa >> b).val
+
+def cpp_preincrement(long long a):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return preincrement(wa).val
+
+def cpp_predecrement(long long a):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return predecrement(wa).val
+
 def assign_index(long long a, long long b, long long c):
     cdef add.wrapped_int wa = add.wrapped_int(a)
     cdef add.wrapped_int wb = add.wrapped_int(b)
@@ -78,4 +129,11 @@ def test():
     assert_raised(minus, b)
     assert_raised(plus, b)
     assert_raised(xor, a, b)
+    assert_raised(address, b)
+    assert_raised(iseq, a, b)
+    assert_raised(neq, a, b)
+    assert_raised(left_shift, a, b)
+    assert_raised(right_shift, a, b)
+    #assert_raised(cpp_preincrement, b)
+    #assert_raised(cpp_predecrement, b)
     assert_raised(assign_index, a, b, c)

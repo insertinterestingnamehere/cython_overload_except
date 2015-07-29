@@ -14,4 +14,27 @@ cdef extern from "add.cpp" nogil:
         long long operator&(wrapped_int &other) except +
         long long operator|(wrapped_int &other) except +
         wrapped_int operator~() except +
+        long long operator&() except +
+        long long operator==(wrapped_int &other) except +
+        long long operator!=(wrapped_int &other) except +
+        long long operator<(wrapped_int &other) except +
+        long long operator<=(wrapped_int &other) except +
+        long long operator>(wrapped_int &other) except +
+        long long operator>=(wrapped_int &other) except +
+        wrapped_int operator<<(long long shift) except +
+        wrapped_int operator>>(long long shift) except +
+        wrapped_int &operator++() except +
+        wrapped_int &operator--() except +
+        wrapped_int &operator++(int thing) except +
+        wrapped_int &operator--(int thing) except +
+        #wrapped_int &operator+=(wrapped_int &other) except +
+        #wrapped_int &operator-=(wrapped_int &other) except +
+        #wrapped_int &operator*=(wrapped_int &other) except +
+        #wrapped_int &operator/=(wrapped_int &other) except +
+        #wrapped_int &operator%=(wrapped_int &other) except +
+        #wrapped_int &operator^=(wrapped_int &other) except +
+        #wrapped_int &operator&=(wrapped_int &other) except +
+        #wrapped_int &operator|=(wrapped_int &other) except +
+        #wrapped_int &operator<<=(wrapped_int &other) except +
+        #wrapped_int &operator>>=(wrapped_int &other) except +
         wrapped_int &operator[](long long &index) except +
