@@ -102,14 +102,18 @@ def left_shift(long long a, long long b):
 def right_shift(long long a, long long b):
     cdef add.wrapped_int wa = add.wrapped_int(a)
     return (wa >> b).val
-
+"""
 def cpp_preincrement(long long a):
     cdef add.wrapped_int wa = add.wrapped_int(a)
     return preincrement(wa).val
 
 def cpp_predecrement(long long a):
     cdef add.wrapped_int wa = add.wrapped_int(a)
-    return predecrement(wa).val
+    return predecrement(wa).val"""
+
+def index(long long a, long long b):
+    cdef add.wrapped_int wa = add.wrapped_int(a)
+    return wa[b].val
 
 def assign_index(long long a, long long b, long long c):
     cdef add.wrapped_int wa = add.wrapped_int(a)
@@ -136,4 +140,5 @@ def test():
     assert_raised(right_shift, a, b)
     #assert_raised(cpp_preincrement, b)
     #assert_raised(cpp_predecrement, b)
+    assert_raised(index, a, b)
     assert_raised(assign_index, a, b, c)

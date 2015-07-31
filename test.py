@@ -1,4 +1,4 @@
 import pyadd as pa
-if __name__ == '__main__':
-    pa.test()
-    print "passed!"
+print "running test"
+pa.test()
+print "passed!"
