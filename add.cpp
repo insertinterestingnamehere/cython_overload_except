@@ -1,5 +1,4 @@
 #include <stdexcept>
-#include <iostream>
 
 class wrapped_int {
 public:
