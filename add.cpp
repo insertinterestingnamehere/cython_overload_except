@@ -1,10 +1,17 @@
 #include <stdexcept>
+#include <iostream>
 
 class wrapped_int {
 public:
   long long val;
   wrapped_int() { val = 0; }
   wrapped_int(long long val) { this->val = val; }
+  wrapped_int(long long v1, long long v2) {
+    if (v2 == 4) {
+      throw std::domain_error("4 isn't good for initialization!");
+    }
+    this->val = v1;
+  }
   wrapped_int operator+(wrapped_int &other) {
     if (other.val == 4) {
       throw std::invalid_argument("tried to add 4");
@@ -204,15 +211,63 @@ public:
   }
   wrapped_int &operator--() {
     if (this->val == 4) {
-      throw std::out_of_range("Can't increment 4!");
+      throw std::out_of_range("Can't decrement 4!");
     }
     this->val -= 1;
     return *this;
+  }
+  wrapped_int operator++(int) {
+    if (this->val == 4) {
+      throw std::out_of_range("Can't increment 4!");
+    }
+    wrapped_int t = *this;
+    this->val += 1;
+    return t;
+  }
+  wrapped_int operator--(int) {
+    if (this->val == 4) {
+      throw std::out_of_range("Can't decrement 4!");
+    }
+    wrapped_int t = *this;
+    this->val -= 1;
+    return t;
+  }
+  wrapped_int operator!() {
+    if (this->val == 4) {
+      throw std::out_of_range("Can't negate 4!");
+    }
+    return wrapped_int(!this->val);
+  }
+  operator bool() {
+    if (this->val == 4) {
+      throw std::invalid_argument("4 can't be cast to a boolean value!");
+    }
+    return (this->val != 0);
   }
   wrapped_int &operator[](long long &idx) {
     if (idx == 4) {
       throw std::invalid_argument("Index of 4 not allowed.");
     }
+    return *this;
+  }
+  long long &operator()() {
+    if (this->val == 4) {
+      throw std::range_error("Can't call 4!");
+    }
+    return this->val;
+  }
+  wrapped_int &operator=(const wrapped_int &other) {
+    if ((other.val == 4) && (this->val == 4)) {
+      throw std::overflow_error("Can't assign 4 to 4!");
+    }
+    this->val = other.val;
+    return *this;
+  }
+  wrapped_int &operator=(const long long &v) {
+    if ((v == 4) && (this->val == 4)) {
+      throw std::overflow_error("Can't assign 4 to 4!");
+    }
+    this->val = v;
     return *this;
   }
 };
